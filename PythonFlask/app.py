@@ -9,10 +9,12 @@ from flask import Flask, render_template, request
 # Definir o nome do app // instanciando
 app = Flask(__name__)
 
+frutas = [] # A lista está no escopo Global
+
 # Criar a rota
 @app.route('/', methods=["GET", "POST"]) #Rota principal normalmente é a /
 def principal():
-  frutas = []
+
   if request.method == "POST":
     if request.form.get("fruta"):
       frutas.append(request.form.get("fruta")) # Após clicar em adicionar fruta no template (front), é chamado essa requisição. O "request.get" irá pegar o que foi digitado no campo form do HTML
