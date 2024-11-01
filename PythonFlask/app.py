@@ -53,6 +53,24 @@ def filmes():
   return render_template("filmes.html", filmes=jsondata['results'])
 
 
+# Criação de Rota Dinâmica no Flask
+@app.route('/filmes/<propriedades>')
+def filmes():
+  url = "exemplo"
+
+  resposta = urllib.request.urlopen(url) 
+
+  dados = resposta.read() 
+
+  jsondata = json.loads(dados) 
+
+  return render_template("filmes.html", filmes=jsondata['results'])
+
+
+
+
+
+
 # Desse modo, garanto que o código irá funcionar sem precisar utilizar o flask run, ele estará de forma dinâmica, atualizando automaticamente
 if __name__ == "__main__": 
   app.run(debug=True)
