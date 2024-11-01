@@ -14,8 +14,12 @@ app = Flask(__name__)
 def principal():
 
   # frutas = ["Morango", "Uva", "Laranja", "Mamão", "Maçã", "Abacate", "Abacaxi"]
-  
+
   frutas = []
+  if request.method == "POST":
+    if request.form.get("fruta"):
+      frutas.append(request.get("fruta")) # Após clicar em adicionar fruta no template (front), é chamado essa requisição. O "request.get" irá pegar o que foi digitado no campo form do HTML
+
   return render_template("index.html", frutas=frutas) # Ao retornar a var nome e idade, consigo acessar ela no arquivo html do parâmetro
 
 @app.route('/sobre')
