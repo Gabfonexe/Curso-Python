@@ -12,20 +12,20 @@
 
   <hr>
   <!-- Nesse caso, como precisei utilizar uma lista [] para poder atualizar o valor de um dicionário {} dinamicamente, terei que mudar o for de dicionário: {% for chave, valor in alunos.items() %} para um for de lista  {% for aluno in alunos %} -->
-  {% for aluno in alunos %}
-    <details>
-      <summary> {{aluno.aluno}} </summary>
-      <p>{{aluno.nota}}</p>
-    </details>
-  {% endfor %}
+    {% for aluno in alunos %}
+        <details>
+          <summary> {{aluno.aluno}} </summary>
+          <p>{{aluno.nota}}</p>
+        </details>
+    {% endfor %}
 
-  <form action="{{url_for('sobre')}}" method="POST">
-    <label>Aluno</label>
-    <input type="text" name="aluno" required>
-    <label>Nota</label>
-    <input type="text" name="nota" required>
-    <button>Adicionar</button>
-  </form>
+    <form action="{{url_for('sobre')}}" method="POST">
+      <label>Aluno</label>
+      <input type="text" name="aluno" required>
+      <label>Nota</label>
+      <input type="text" name="nota" required>
+      <button>Adicionar</button>
+    </form>
 
 
 </body>
