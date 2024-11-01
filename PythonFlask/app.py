@@ -48,7 +48,9 @@ def filmes():
 
   jsondata = json.loads(dados) # carrega / transforma os dados em tipo json 
 
-  return(jsondata['results']) # Retorna somente a camada "results" do arquivo json, ou seja, estou especificando qual parte do json quero receber no momento.
+  # return(jsondata['results']) # Retorna somente a camada "results" do arquivo json, ou seja, estou especificando qual parte do json quero receber no momento.
+
+  return render_template("filmes.html", filmes=jsondata['results'])
 
 
 # Desse modo, garanto que o código irá funcionar sem precisar utilizar o flask run, ele estará de forma dinâmica, atualizando automaticamente
