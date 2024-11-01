@@ -12,7 +12,7 @@ app = Flask(__name__)
 # Criar a rota
 @app.route('/') #Rota principal normalmente é a /
 def principal():
-  frutas = ["Morango", "Uva", "Laranja", "Mamão", "Maçã"]
+  frutas = ["Morango", "Uva", "Laranja", "Mamão", "Maçã", "Abacate", "Abacaxi"]
   return render_template("index.html", frutas=frutas) # Ao retornar a var nome e idade, consigo acessar ela no arquivo html do parâmetro
 
 @app.route('/sobre')
