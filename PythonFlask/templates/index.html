@@ -9,7 +9,12 @@
 <body>
   <h2>Integração do HTML com Flask</h2>
 
-  {{nome}} tem {{idade}} anos
+  <ol>  <!-- Estrutura do Html através do flask, para poder passar um laço do tipo for -->
+    {% for fruta in frutas %}
+      <li>{{fruta}}</li>
+    {% endfor %}
+
+  </ol>
 
 
 </body>
