@@ -27,7 +27,7 @@ def principal():
 
 
 @app.route('/sobre', methods=["GET", "POST"])
-def sobre():
+def adicionarAluno():
   # notas = {"Fulano":5.0, "Beltrano":6.0, "Aluno":7.0, "Sicrano":8.5}
 
   if request.method == "POST":
