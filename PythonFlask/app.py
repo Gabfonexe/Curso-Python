@@ -11,6 +11,9 @@ app = Flask(__name__)
 
 frutas = [] # A lista está no escopo Global
 
+alunos = {}  # O dicionário está no escopo Global
+
+
 # Criar a rota
 @app.route('/', methods=["GET", "POST"]) #Rota principal normalmente é a /
 def principal():
@@ -21,10 +24,20 @@ def principal():
 
   return render_template("index.html", frutas=frutas) # Ao retornar a var nome e idade, consigo acessar ela no arquivo html do parâmetro
 
-@app.route('/sobre')
+
+
+@app.route('/sobre', methods=["GET", "POST"])
 def sobre():
-  notas = {"Fulano":5.0, "Beltrano":6.0, "Aluno":7.0, "Sicrano":8.5}
-  return render_template("sobre.html", notas=notas)
+  # notas = {"Fulano":5.0, "Beltrano":6.0, "Aluno":7.0, "Sicrano":8.5}
+
+  if request.method == "POST":
+    if request.form.get("aluno"):
+      alunos.update(request.form.get("aluno"))
+    elif request.form.get("nota"):
+      alunos.update(request.form.get("nota"))
+
+
+  return render_template("sobre.html", alunos=alunos)
 
 
 
