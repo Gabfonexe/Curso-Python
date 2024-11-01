@@ -12,9 +12,6 @@ app = Flask(__name__)
 # Criar a rota
 @app.route('/', methods=["GET", "POST"]) #Rota principal normalmente é a /
 def principal():
-
-  # frutas = ["Morango", "Uva", "Laranja", "Mamão", "Maçã", "Abacate", "Abacaxi"]
-
   frutas = []
   if request.method == "POST":
     if request.form.get("fruta"):
