@@ -40,7 +40,7 @@ def adicionarAluno():
 
 @app.route('/filmes')
 def filmes():
-  url = "exemplo"
+  url = "https://exemplo"
 
   resposta = urllib.request.urlopen(url) # Cria um obj (instância) que acessa a URL desejada
 
@@ -55,8 +55,21 @@ def filmes():
 
 # Criação de Rota Dinâmica no Flask
 @app.route('/filmes/<propriedades>')
-def filmes():
-  url = "exemplo"
+def filmes(propriedade): #preicso passar como parâmetro para poder ser acessado no HTML
+
+  # Criando condição para escolha da URL correta
+  if propriedade == 'populares':
+    url = "https://exemplo/populares"
+  elif propriedade == 'aventura':
+    url = "https://exemplo/aventura"
+  elif propriedade == 'suspense':
+    url = "https://exemplo/suspense"
+  elif propriedade == 'terror':
+    url = "https://exemplo/terror"
+  elif propriedade == 'comedia':
+    url = "https://exemplo/comedia"
+
+
 
   resposta = urllib.request.urlopen(url) 
 
