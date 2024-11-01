@@ -37,4 +37,10 @@ def adicionarAluno():
   return render_template("sobre.html", alunos=alunos)
 
 
+@app.route('/filmes')
+def filmes():
+  url = "exemplo"
+
+  resposta = urli
+
 
