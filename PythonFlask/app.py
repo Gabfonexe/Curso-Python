@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # Sempre usar na primeira vez que usar o Flask, esse comando - set FLASK_APP=app.py / Isso configura a variavel de ambiente
 
@@ -10,9 +10,12 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 # Criar a rota
-@app.route('/') #Rota principal normalmente é a /
+@app.route('/', methods=["GET", "POST"]) #Rota principal normalmente é a /
 def principal():
-  frutas = ["Morango", "Uva", "Laranja", "Mamão", "Maçã", "Abacate", "Abacaxi"]
+
+  # frutas = ["Morango", "Uva", "Laranja", "Mamão", "Maçã", "Abacate", "Abacaxi"]
+  
+  frutas = []
   return render_template("index.html", frutas=frutas) # Ao retornar a var nome e idade, consigo acessar ela no arquivo html do parâmetro
 
 @app.route('/sobre')

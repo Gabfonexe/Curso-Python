@@ -13,12 +13,11 @@
     {% for fruta in frutas %}
       <li>{{fruta}}</li>
     {% endfor %}
-    <form action="">
+    <form action="{{url_for('principal')}}" method="">
       <label for="">Fruta</label>
       <input type="text" name="fruta" id="">
       <button>Adicionar</button>
       
-
 
     </form>
   </ol>
