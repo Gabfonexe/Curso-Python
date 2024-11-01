@@ -13,7 +13,7 @@
     {% for fruta in frutas %}
       <li>{{fruta}}</li>
     {% endfor %}    <!--Passando o nome da function responsavel no atributo "action"-->
-    <form action="{{url_for('principal')}}" method="post">
+    <form action="{{url_for('principal')}}" method="POST">
       <label for="">Fruta</label>
       <input type="text" name="fruta" required>
       <button>Adicionar</button>

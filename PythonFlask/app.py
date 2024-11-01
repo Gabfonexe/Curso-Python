@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 frutas = [] # A lista está no escopo Global
 
-alunos = {}  # O dicionário está no escopo Global
+alunos = []  # Nesse caso, precisei criar uma lista para poder adicionar dinamicamente no dicionário
 
 
 # Criar a rota
@@ -31,11 +31,8 @@ def sobre():
   # notas = {"Fulano":5.0, "Beltrano":6.0, "Aluno":7.0, "Sicrano":8.5}
 
   if request.method == "POST":
-    if request.form.get("aluno"):
-      alunos.update(request.form.get("aluno"))
-    elif request.form.get("nota"):
-      alunos.update(request.form.get("nota"))
-
+    if request.form.get("aluno") and request.form.get("nota"):
+      alunos.append({"aluno": request.form.get("aluno"), "nota": request.form.get("nota")})
 
   return render_template("sobre.html", alunos=alunos)
 
