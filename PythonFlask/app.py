@@ -17,7 +17,8 @@ def principal():
 
 @app.route('/sobre')
 def sobre():
-  return render_template("sobre.html")
+  notas = {"Fulano":5.0, "Beltrano":6.0, "Aluno":7.0, "Sicrano":8.5}
+  return render_template("sobre.html", notas=notas)
 
 
 
