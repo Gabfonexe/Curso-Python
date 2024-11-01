@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import urllib.request, json
 
 # Sempre usar na primeira vez que usar o Flask, esse comando - set FLASK_APP=app.py / Isso configura a variavel de ambiente
 
@@ -41,6 +42,12 @@ def adicionarAluno():
 def filmes():
   url = "exemplo"
 
-  resposta = urli
+  resposta = urllib.request.urlopen(url) # Cria um obj (instância) que acessa a URL desejada
+
+  dados = resposta.read() # Realiza a leitura dos dados da url que está sendo acessada
+
+  jsondata = json.loads(dados) # carrega / transforma os dados em tipo json 
+
+  print(jsondata['results']) # Retorna somente a camada "results" do arquivo json, ou seja, estou especificando qual parte do json quero receber no momento.
 
 
