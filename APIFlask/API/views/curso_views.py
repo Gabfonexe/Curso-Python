@@ -33,7 +33,7 @@ class CursoDetail(Resource): #Ao extender da classe Resource, os métodos HTTP s
     if curso is None:
       return make_response(jsonify("Curso não foi encontrado"), 404)
     cs = curso_schema.CursoSchema()
-    return make_response(cs.jsonify(curso), 200)
+    return make_response(cs.jsonify(curso), 200) # jsonfy para retornar em formato json
 
   def put(self):
     pass
