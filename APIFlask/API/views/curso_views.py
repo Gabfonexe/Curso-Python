@@ -29,7 +29,11 @@ class CursoList(Resource):
 class CursoDetail(Resource): #Ao extender da classe Resource, os métodos HTTP serão declarados abaixo
 
   def get(self):
-    pass
+    curso = curso_service.listar_curso_id(id)
+    if curso is None:
+      return make_response(jsonify("Curso não foi encontrado"), 404)
+    cs = curso_schema.CursoSchema()
+    return make_response(cs.jsonify(curso), 200)
 
   def put(self):
     pass
@@ -38,4 +42,5 @@ class CursoDetail(Resource): #Ao extender da classe Resource, os métodos HTTP s
     pass
 
      
-api.add_resource(CursoList, '/cursos') # criando rota
+api.add_resource(CursoList, '/cursos') # criando rota default de listas de curso
+api.add_resource(CursoDetail, '/cursos/<int:id>') # Criando rota de obter pelo ID
