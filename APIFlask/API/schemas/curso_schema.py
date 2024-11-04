@@ -1,4 +1,4 @@
-from API import ma
+from api import ma
 from ..models import curso_model
 from marshmallow import fields
 

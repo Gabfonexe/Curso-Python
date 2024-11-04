@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from API import api
+from api import api
 from ..schemas import curso_schema
 from flask import request, make_response, jsonify
 from ..entidades import curso
@@ -25,5 +25,17 @@ class CursoList(Resource):
       resultado = curso_service.cadastrar_curso(novo_curso)
       x = cs.jsonify(resultado)
       return make_response(x, 201)
+    
+class CursoDetail(Resource): #Ao extender da classe Resource, os métodos HTTP serão declarados abaixo
+
+  def get(self):
+    pass
+
+  def put(self):
+    pass
+
+  def delete(self):
+    pass
+
      
 api.add_resource(CursoList, '/cursos') # criando rota
