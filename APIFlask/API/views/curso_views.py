@@ -32,11 +32,26 @@ class CursoDetail(Resource): #Ao extender da classe Resource, os métodos HTTP s
     curso = curso_service.listar_curso_id(id)
     if curso is None:
       return make_response(jsonify("Curso não foi encontrado"), 404)
-    cs = curso_schema.CursoSchema()
+    cs = curso_schema.CursoSchema() #Como queero recuperar somente 1 valor, não passo o many=true
     return make_response(cs.jsonify(curso), 200) # jsonfy para retornar em formato json
 
   def put(self):
-    pass
+    curso_bd = curso_service.listar_curso_id(id)
+    if curso_bd is None:
+      return make_response(jsonify("Curso não foi encontrado"), 404)
+    cs = curso_schema.CursoSchema() #Como queero recuperar somente 1 valor, não passo o many=true
+    validate = cs.validate(request.json) #Verificar a validação dos dados
+    if validate: #Caso houver algum erro de validação
+      return make_response(jsonify(validate), 400)
+    else:
+      nome = request.json["node"]
+      descricao = request.json["descricao"]
+      data_publicacao = request.json["data_publicacao"]
+      novo_curso = curso.Curso(name=nome, descricao=descricao, data_publicacao=data_publicacao)
+      curso_service.atualiza_curso(curso_bd, novo_curso)
+      curso_atualizado = curso_service.listar_curso_id(id)
+      return make_response(cs.jsonify(curso_atualizado), 200) # atualizar e ter acesso ao recurso atualizado, por isso coloco esse retorno.
+
 
   def delete(self):
     pass
