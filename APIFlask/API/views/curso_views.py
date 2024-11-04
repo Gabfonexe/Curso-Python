@@ -7,13 +7,23 @@ from ..services import curso_service
 
 class CursoList(Resource):
   def get(self):
-    return "Estudando API com Flaskdfd"
+    cursos = curso_service.listar_cursos()
+    cs = curso_schema.CursoSchema(many=True)
+    return make_response(cs.jsonify(curso), 200)
   
   def post(self):
     cs = curso_schema.CursoSchema()
     validate = cs.validate(request.json)
-    if validate:
+    if validate: # Caso dê erro
       return make_response(jsonify(validate), 400)
-    
-  
+    else: # Caso funcione e passe, será criado, gerando um código
+      nome = request.json["node"]
+      descricao = request.json["descricao"]
+      data_publicacao = request.json["data_publicacao"]
+
+      novo_curso = curso.Curso(nome=nome, descricao=descricao, data_publicacao=data_publicacao)
+      resultado = curso_service.cadastrar_curso(novo_curso)
+      x = cs.jsonify(resultado)
+      return make_response(x, 201)
+     
 api.add_resource(CursoList, '/cursos') # criando rota

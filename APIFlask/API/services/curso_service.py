@@ -7,3 +7,6 @@ def cadastrar_curso(curso):
   db.session.commit() # realizar as att no BD
   return curso_bd
 
+def listar_cursos():
+  cursos = curso_model.Curso.query.all()
+  return cursos
