@@ -21,4 +21,6 @@ def atualiza_curso(curso_anterior, curso_novo):
   curso_anterior.data_publicacao = curso_novo.data_publicacao
   db.session.commit() #não preciso retornar, basta atualizar no banco de dados
 
-  def remove_curso(id)
+def remove_curso(curso):
+  db.session.delete(curso)
+  db.session.commit()

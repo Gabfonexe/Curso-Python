@@ -54,7 +54,11 @@ class CursoDetail(Resource): #Ao extender da classe Resource, os métodos HTTP s
 
 
   def delete(self):
-    pass
+    curso_bd =  curso_service.listar_curso_id(id)
+    if curso_bd is None:
+      return make_response(jsonify("Curso não encontrado"), 404)
+    curso_service.remove_curso(curso_bd)
+    return make_response('Curso excluído com sucesso', 204)
 
      
 api.add_resource(CursoList, '/cursos') # criando rota default de listas de curso
