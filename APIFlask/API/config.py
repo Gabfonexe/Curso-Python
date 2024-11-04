@@ -1,9 +1,9 @@
 DEBUG = True
 
 #Dados do BANCO de DADOS
-USERNAME = ''
-PASSWORD = ''
-SERVER = 'localhost'
+USERNAME = 'root'
+PASSWORD = '0000'
+SERVER = 'Projetos'
 DB = 'api_flask'
 
 #String de conexão
