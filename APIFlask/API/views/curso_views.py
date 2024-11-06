@@ -17,7 +17,7 @@ class CursoList(Resource):
     if validate: # Caso dê erro
       return make_response(jsonify(validate), 400)
     else: # Caso funcione e passe, será criado, gerando um código
-      nome = request.json["node"]
+      nome = request.json["nome"]
       descricao = request.json["descricao"]
       data_publicacao = request.json["data_publicacao"]
 
